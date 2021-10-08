@@ -1,0 +1,11 @@
+<form role="form" name="form">
+   <script cam-script type="text/form-script">
+        camForm.on('form-loaded', function() {
+            camForm.variableManager.fetchVariable('centroidFile');
+        });
+    </script>
+  <label for="decision-boundary">Final centroids after performing clustering:</label>
+  <a href="{{ camForm.variableManager.variable('centroidFile').contentUrl }}" target="_blank">Textual</a>
+  
+  <a href="{{ camForm.variableManager.variable('centroidFile').contentUrl }}"  target="_blank" >Download Centroid Data</a>
+</form>

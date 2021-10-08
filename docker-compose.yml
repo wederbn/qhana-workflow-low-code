@@ -1,0 +1,14 @@
+version: '3'
+services:
+  ### Camunda Engine ###
+  camunda-engine:
+    build: workflow
+    environment:
+      PUBLIC_HOSTNAME: ${PUBLIC_HOSTNAME}
+    ports:
+      - 8080:8080
+    networks:
+      - qhana-workflow
+networks:
+  qhana-workflow:
+    driver: bridge

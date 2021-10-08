@@ -2,14 +2,13 @@
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="Definitions_0v1n2yz" exporter="QuantME Modeler" exporterVersion="4.4.0" targetNamespace="http://bpmn.io/schema/bpmn">
   <bpmn:process id="quantum-workflow-demonstrator" isExecutable="true">
     <bpmn:serviceTask id="Task_1vj0tpw" camunda:async="true" camunda:class="org.quantil.quantme.demonstrator.tasks.AggregateDistancesTask" name="Aggregate Distances">
-      <bpmn:incoming>SequenceFlow_12</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_9</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_10" camunda:class="org.quantil.quantme.demonstrator.tasks.CalculateDistancesTask" camunda:async="true" name="Calculate Distances">
       <bpmn:incoming>SequenceFlow_11</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_12</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_9</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_12" name="" sourceRef="ServiceTask_10" targetRef="Task_1vj0tpw"/>
     <bpmn:serviceTask id="ServiceTask_9" camunda:class="org.quantil.quantme.demonstrator.tasks.DataLoadingTask" camunda:async="true" name="Retrieve &#xD;&#xA;Data">
       <bpmn:incoming>SequenceFlow_13c7mqn</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_11</bpmn:outgoing>
@@ -48,6 +47,7 @@
       <bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="SequenceFlow_2" name="" sourceRef="UserTask_2" targetRef="ServiceTask_3"/>
+    <bpmn:sequenceFlow id="SequenceFlow_9" name="" sourceRef="ServiceTask_10" targetRef="Task_1vj0tpw"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="quantum-workflow-demonstrator">
@@ -82,13 +82,6 @@
       <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_12" bpmnElement="ServiceTask_10">
         <dc:Bounds height="80.0" width="100.0" x="260.0" y="276.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_12" bpmnElement="SequenceFlow_12" sourceElement="_BPMNShape_ServiceTask_12" targetElement="ServiceTask_0sbocp9_di">
-        <di:waypoint xsi:type="dc:Point" x="360.0" y="316.0"/>
-        <di:waypoint xsi:type="dc:Point" x="414.0" y="317.0"/>
-        <bpmndi:BPMNLabel>
-          <dc:Bounds height="6.0" width="6.0" x="382.0" y="316.0"/>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_13" bpmnElement="ServiceTask_3">
         <dc:Bounds height="80.0" width="100.0" x="564.0" y="277.0"/>
       </bpmndi:BPMNShape>
@@ -136,6 +129,12 @@
         <di:waypoint xsi:type="dc:Point" x="539.0" y="377.0"/>
         <di:waypoint xsi:type="dc:Point" x="614.0" y="377.0"/>
         <di:waypoint xsi:type="dc:Point" x="614.0" y="357.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="_BPMNShape_ServiceTask_12" targetElement="ServiceTask_0sbocp9_di">
+        <di:waypoint xsi:type="dc:Point" x="360.0" y="316.0"/>
+        <di:waypoint xsi:type="dc:Point" x="387.0" y="316.0"/>
+        <di:waypoint xsi:type="dc:Point" x="387.0" y="317.0"/>
+        <di:waypoint xsi:type="dc:Point" x="414.0" y="317.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

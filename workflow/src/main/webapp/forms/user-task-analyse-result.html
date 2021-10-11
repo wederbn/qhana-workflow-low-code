@@ -5,10 +5,9 @@
         	fetch("http://localhost:8080/camunda/api/engine/engine/default/task/" + camForm.taskId + "/variables/plotFile/data").then(function (response) {
             	return response.blob();
         	}).then(function (myBlob) {
-            	var objectURL = URL.createObjectURL(myBlob);
-            	document.querySelector('#iframe').src = '';
-            	document.querySelector('#iframe').src = objectURL;
-            	objectURL = URL.revokeObjectURL(myBlob);
+            	myBlob.text().then(text => {
+            		document.querySelector('#iframe').srcdoc = text;
+				});
         	});
 		});
     </script>
@@ -16,5 +15,5 @@
   
   <a href="{{ camForm.variableManager.variable('plotFile').contentUrl }}"  target="_blank" >Download Centroid Data</a>
   
-  <iframe id="iframe" width="100%"></iframe>
+  <iframe id="iframe" width="800" height="800"></iframe>
 </form>

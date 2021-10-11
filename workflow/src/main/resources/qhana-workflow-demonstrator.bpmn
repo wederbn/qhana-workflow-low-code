@@ -16,18 +16,17 @@
     <bpmn:sequenceFlow id="SequenceFlow_11" name="" sourceRef="ServiceTask_9" targetRef="ServiceTask_10"/>
     <bpmn:serviceTask id="ServiceTask_3" camunda:class="org.quantil.quantme.demonstrator.tasks.PerformMDSTask" camunda:async="true" camunda:asyncAfter="true" name="Perform MDS">
       <bpmn:incoming>SequenceFlow_3</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_8</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_19</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_4" camunda:class="org.quantil.quantme.demonstrator.tasks.PerformQuantumKMeansTask" camunda:async="true" camunda:asyncAfter="true" name="Perform Quantum K-Means">
-      <bpmn:incoming>SequenceFlow_10</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_5</bpmn:outgoing>
+      <bpmn:incoming>SequenceFlow_19</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_20</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_5" camunda:class="org.quantil.quantme.demonstrator.tasks.GenerateVisualizationTask" camunda:async="true" camunda:asyncAfter="true" name="Generate Visualization">
-      <bpmn:incoming>SequenceFlow_5</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_20</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_6</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_5" name="" sourceRef="ServiceTask_4" targetRef="ServiceTask_5"/>
-    <bpmn:userTask id="UserTask_1" name="Analyze Results">
+    <bpmn:userTask id="UserTask_1" name="Analyze Results" camunda:formKey="embedded:app:forms/user-task-analyse-result.html">
       <bpmn:incoming>SequenceFlow_6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_7</bpmn:outgoing>
     </bpmn:userTask>
@@ -42,12 +41,8 @@
     <bpmn:sequenceFlow id="SequenceFlow_13c7mqn" sourceRef="StartEvent_1" targetRef="ServiceTask_9"/>
     <bpmn:sequenceFlow id="SequenceFlow_9" name="" sourceRef="ServiceTask_10" targetRef="Task_1vj0tpw"/>
     <bpmn:sequenceFlow id="SequenceFlow_3" name="" sourceRef="Task_1vj0tpw" targetRef="ServiceTask_3"/>
-    <bpmn:sequenceFlow id="SequenceFlow_8" name="" sourceRef="ServiceTask_3" targetRef="UserTask_3"/>
-    <bpmn:userTask id="UserTask_3">
-      <bpmn:incoming>SequenceFlow_8</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_10</bpmn:outgoing>
-    </bpmn:userTask>
-    <bpmn:sequenceFlow id="SequenceFlow_10" name="" sourceRef="UserTask_3" targetRef="ServiceTask_4"/>
+    <bpmn:sequenceFlow id="SequenceFlow_19" name="" sourceRef="ServiceTask_3" targetRef="ServiceTask_4"/>
+    <bpmn:sequenceFlow id="SequenceFlow_20" name="" sourceRef="ServiceTask_4" targetRef="ServiceTask_5"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="quantum-workflow-demonstrator">
@@ -91,10 +86,6 @@
       <bpmndi:BPMNShape id="_BPMNShape_ServiceTask_15" bpmnElement="ServiceTask_5">
         <dc:Bounds height="80.0" width="100.0" x="864.0" y="277.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="_BPMNShape_ServiceTask_14" targetElement="_BPMNShape_ServiceTask_15">
-        <di:waypoint xsi:type="dc:Point" x="814.0" y="317.0"/>
-        <di:waypoint xsi:type="dc:Point" x="864.0" y="317.0"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_UserTask_2" bpmnElement="UserTask_1">
         <dc:Bounds height="80.0" width="100.0" x="1014.0" y="277.0"/>
       </bpmndi:BPMNShape>
@@ -119,23 +110,13 @@
         <di:waypoint xsi:type="dc:Point" x="514.0" y="317.0"/>
         <di:waypoint xsi:type="dc:Point" x="564.0" y="317.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="_BPMNShape_UserTask_4" bpmnElement="UserTask_3">
-        <dc:Bounds height="80.0" width="100.0" x="624.0" y="420.0"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="_BPMNShape_ServiceTask_13" targetElement="_BPMNShape_UserTask_4">
-        <di:waypoint xsi:type="dc:Point" x="614.0" y="357.0"/>
-        <di:waypoint xsi:type="dc:Point" x="614.0" y="388.0"/>
-        <di:waypoint xsi:type="dc:Point" x="674.0" y="388.0"/>
-        <di:waypoint xsi:type="dc:Point" x="674.0" y="420.0"/>
-        <bpmndi:BPMNLabel>
-          <dc:Bounds height="6.0" width="6.0" x="655.0" y="388.0"/>
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_19" bpmnElement="SequenceFlow_19" sourceElement="_BPMNShape_ServiceTask_13" targetElement="_BPMNShape_ServiceTask_14">
+        <di:waypoint xsi:type="dc:Point" x="664.0" y="317.0"/>
+        <di:waypoint xsi:type="dc:Point" x="714.0" y="317.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_10" bpmnElement="SequenceFlow_10" sourceElement="_BPMNShape_UserTask_4" targetElement="_BPMNShape_ServiceTask_14">
-        <di:waypoint xsi:type="dc:Point" x="674.0" y="420.0"/>
-        <di:waypoint xsi:type="dc:Point" x="674.0" y="389.0"/>
-        <di:waypoint xsi:type="dc:Point" x="764.0" y="389.0"/>
-        <di:waypoint xsi:type="dc:Point" x="764.0" y="357.0"/>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_20" bpmnElement="SequenceFlow_20" sourceElement="_BPMNShape_ServiceTask_14" targetElement="_BPMNShape_ServiceTask_15">
+        <di:waypoint xsi:type="dc:Point" x="814.0" y="317.0"/>
+        <di:waypoint xsi:type="dc:Point" x="864.0" y="317.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

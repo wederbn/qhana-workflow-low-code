@@ -97,7 +97,7 @@ public class PerformMDSTask implements JavaDelegate {
 
             final boolean success = Utils.addFileFromUrlAsVariable(new URL(entityDistancesUrl), "entity-points-", null,
                     Constants.VARIABLE_NAME_ENTITY_POINTS_FILE, MediaType.TEXT_PLAIN.toString(), execution);
-            LOGGER.info("Downloading and adding of entity distance file returned: {}", success);
+            LOGGER.info("Downloading and adding of entity points file returned: {}", success);
         } catch (final Exception e) {
             LOGGER.error("Exception while sending post request to URL: {}", requestUrl);
             throw new BpmnError("Exception while sending post request to URL: " + requestUrl);
